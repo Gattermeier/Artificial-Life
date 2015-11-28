@@ -27,9 +27,12 @@ actionTypes.eat = function(critter, vector, action) {
   if (!atDest || atDest.energy === null) {
     return false;
   }
-  critter.energy += atDest.energy * 66 / 100;
-
+  // Critter get's only 10% of energy of plant
+  critter.energy += atDest.energy * 10 / 100;
+  // Plant dead
   this.grid.set(dest, null);
+  // Maybe plant doesn't get eaten all at once?
+  
   // if ( (atDest.energy - atDest.energy *50/100) < 1) {
   //   this.grid.set(dest, null);
   // } else {
