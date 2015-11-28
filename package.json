@@ -1,0 +1,20 @@
+{
+  "name": "elife",
+  "version": "1.0.0",
+  "description": "ELife Implementation inspired by Eloquent Javascript Example",
+  "main": "build/bundle.js",
+  "dependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.1.4",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.12.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthias Gattermeier",
+  "license": "ISC"
+}

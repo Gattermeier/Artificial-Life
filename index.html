@@ -1,0 +1,61 @@
+<!doctype html>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/bundle.js"></script>
+<script src="animateworld.js"></script>
+<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<body>
+  <div class="container">
+    <h1>Artificial Life Simulation</h1>
+    <div class="">
+      <div id="world" class="btn btn-default">Start / Stop</div>
+    </div>
+  </div>
+  <script>
+  var active = null;
+
+  function Animated(world) {
+    this.world = world;
+    var outer = (window.__sandbox ? window.__sandbox.output.div : document.body), doc = outer.ownerDocument;
+    var node = outer.appendChild(doc.createElement("div"));
+    node.style.cssText = "position: relative; width: intrinsic; width: fit-content;";
+    this.pre = node.appendChild(doc.createElement("pre"));
+    this.pre.appendChild(doc.createTextNode(world.toString()));
+
+    this.button = document.getElementById('world');
+    this.button.innerHTML = "Stop Simulation";
+    var self = this;
+    this.button.addEventListener("click", function() { self.clicked(); });
+
+    this.disabled = false;
+    if (active) active.disable();
+    active = this;
+    this.interval = setInterval(function() { self.tick(); }, 133);
+  }
+
+  Animated.prototype.clicked = function() {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+      this.button.innerHTML = "Start Simulation";
+    } else {
+      var self = this;
+      this.interval = setInterval(function() { self.tick(); }, 133);
+      this.button.innerHTML = "Stop Simulation";
+    }
+  };
+
+  Animated.prototype.tick = function() {
+    this.world.turn();
+    this.pre.removeChild(this.pre.firstChild);
+    // console.log(this.world.toString());
+    this.pre.appendChild(this.pre.ownerDocument.createTextNode(this.world.toString()));
+  };
+
+
+  window.animateWorld = function(world) { new Animated(world); };
+
+  animateWorld(valley);
+  </script>
+</body>
