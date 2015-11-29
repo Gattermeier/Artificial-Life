@@ -1,14 +1,11 @@
-const Vector = require('./vector');
-const Grid = require('./grid');
-const View = require('./view');
-const World = require('./world');
-const Plant = require('./plant');
-const WallFollower = require('./wallfollower');
-const PlantEater = require('./planteater');
+'use strict';
 
-const directions = require('./utils').directions;
-const charFromElement = require('./utils').charFromElement;
-const randomElement = require('./utils').randomElement;
+import World from './world';
+import Plant from './plant';
+import WallFollower from './wallfollower';
+import PlantEater from './planteater';
+
+import {directions, charFromElement, randomElement} from './utils';
 
 const directionNames = "n ne e se s sw w nw".split(" ");
 

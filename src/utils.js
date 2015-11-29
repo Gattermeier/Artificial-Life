@@ -1,4 +1,4 @@
-var Vector = require('./vector');
+import Vector from './vector';
 
 var directions = {
   "n":  new Vector( 0, -1),
@@ -31,8 +31,8 @@ var elementFromChar = function(legend, ch, genome, energy) {
   return element;
 }
 
-exports.directions = directions;
-exports.charFromElement = charFromElement;
-exports.randomElement = randomElement;
-exports.elementFromChar = elementFromChar;
-exports.directionNames = directionNames;
+export { directions }
+export { directionNames }
+export { charFromElement }
+export { randomElement }
+export { elementFromChar }

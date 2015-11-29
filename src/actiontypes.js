@@ -1,23 +1,26 @@
-var directions = require('./utils').directions;
-var charFromElement = require('./utils').charFromElement;
-var randomElement = require('./utils').randomElement;
+// var directions = require('./utils').directions;
+// var charFromElement = require('./utils').charFromElement;
+// var randomElement = require('./utils').randomElement;
 // var createIndividualFromSymbol = require('./utils').createIndividualFromSymbol;
-var elementFromChar = require('./utils').elementFromChar;
+// var elementFromChar = require('./utils').elementFromChar;
 
-var lowest = 15,
-    highest = 15;
+import {directions, charFromElement, randomElement, elementFromChar} from './utils';
+
+
+// var lowest = 15,
+//     highest = 15;
 var mutate = function(parentGenome) {
   var childGenome = Object.create(null);
-  for (key in parentGenome) {
+  for (let key in parentGenome) {
     childGenome[key] = parentGenome[key];
     var chance = Math.random();
     if (chance < .05) {
       childGenome[key] = parentGenome[key] - 1;
-      lowest = childGenome[key] < lowest ? childGenome[key] : lowest;
+      // lowest = childGenome[key] < lowest ? childGenome[key] : lowest;
     }
     if (chance > .95) {
       childGenome[key] = parentGenome[key] + 1;
-      highest = childGenome[key] > highest ? childGenome[key] : highest;
+      // highest = childGenome[key] > highest ? childGenome[key] : highest;
     }
   }
   return childGenome
@@ -83,4 +86,5 @@ actionTypes.reproduce = function(critter, vector, action) {
   return true;
 };
 
-module.exports = actionTypes;
+export default actionTypes
+// module.exports = actionTypes;

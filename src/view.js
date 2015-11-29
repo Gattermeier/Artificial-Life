@@ -1,31 +1,35 @@
-var directions = require('./utils').directions;
-var charFromElement = require('./utils').charFromElement;
-var randomElement = require('./utils').randomElement;
+// var directions = require('./utils').directions;
+// var charFromElement = require('./utils').charFromElement;
+// var randomElement = require('./utils').randomElement;
 
-var View = function(world, vector) {
-  this.world = world;
-  this.vector = vector;
-}
-View.prototype.look = function(dir) {
-  var target = this.vector.plus(directions[dir]);
-  if (this.world.grid.isInside(target)) {
-    return charFromElement(this.world.grid.get(target));
-  } else {
-    return "#";
+import {directions, charFromElement, randomElement} from './utils';
+
+class View {
+  constructor(world, vector) {
+    this.world = world;
+    this.vector = vector;
   }
-};
-View.prototype.findAll = function(ch) {
-  var found = [];
-  for (var dir in directions)
-    if (this.look(dir) === ch) {
-      found.push(dir);
+  look(dir) {
+    let target = this.vector.plus(directions[dir]);
+    if (this.world.grid.isInside(target)) {
+      return charFromElement(this.world.grid.get(target));
+    } else {
+      return "#";
     }
-  return found;
-};
-View.prototype.find = function(ch) {
-  var found = this.findAll(ch);
-  if (found.length === 0) return null;
-  return randomElement(found);
-};
+  }
+  findAll(ch) {
+    let found = [];
+    for (let dir in directions)
+      if (this.look(dir) === ch) {
+        found.push(dir);
+      }
+    return found;
+  }
+  find(ch) {
+    let found = this.findAll(ch);
+    if (found.length === 0) return null;
+    return randomElement(found);
+  }
+}
 
-module.exports = View
+export default View

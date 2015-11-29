@@ -1,6 +1,6 @@
 # Artificial Life Simulation   
 
-Reimplementation of Eloquent Javascripts's elife
+A fairly simple simulation of electronic life with genetic inheritance and mutation, originally inspired by Eloquent Javascripts's elife.  
 
 ## Usage   
 Run npm install, then webpack, then open index.html in Chrome
