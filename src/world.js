@@ -35,6 +35,7 @@ World.prototype.toString = function() {
 World.prototype.turn = function() {
   var acted = [];
   this.grid.forEach(function(critter, vector) {
+    // console.log(vector , ' Vector of Crittor: ', critter)
     if (critter.act && acted.indexOf(critter) === -1) {
       acted.push(critter);
       this.letAct(critter, vector);
@@ -45,16 +46,26 @@ World.prototype.turn = function() {
 World.prototype.letAct = function(critter, vector) {
 
   var action = critter.act(new View(this, vector));
+  // if (action.type === 'reproduce') {
+  //   console.log('Critter act returns:', action, ' from Critter: ', critter);
+  // }
 
   var handled = action &&
     action.type in actionTypes &&
+    // console.log('this: ',this, '' )
     actionTypes[action.type].call(this, critter, vector, action);
 
   if (!handled) {
     critter.energy -= 0.2;
+    // if Critter out of energy, consider dead
     if (critter.energy <= 0) {
       this.grid.set(vector, null);
     }
+  }
+  // if critter too old, it should die
+  critter.age += 1;
+  if (critter.age > critter.genome.maxage) {
+    this.grid.set(vector, null);
   }
 };
 

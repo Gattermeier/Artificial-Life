@@ -21,11 +21,12 @@ var randomElement = function(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-var elementFromChar = function(legend, ch) {
+// create a new individual, with genome and energy from parent
+var elementFromChar = function(legend, ch, genome, energy) {
   if (ch === " " || legend[ch] === undefined) {
     return null;
   }
-  var element = new legend[ch]();
+  var element = new legend[ch](genome, energy);
   element.originChar = ch;
   return element;
 }

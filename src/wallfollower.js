@@ -5,8 +5,14 @@ function dirPlus(dir, n) {
   return directionNames[(index + n + 8) % 8];
 }
 
-var WallFollower = function() {
+var WallFollower = function(parentGenome) {
   this.dir = "s";
+  this.energy = 50;
+  this.genome = Object.create(null);
+  this.genome.reproduce = parentGenome ? parentGenome.reproduce : 20;
+  this.genome.maxage = parentGenome ? parentGenome.maxage : 50;
+  this.genome.maxgrowth = parentGenome ? parentGenome.maxgrowth : 30;
+  this.age = 0
 }
 
 WallFollower.prototype.act = function(view) {
