@@ -19,8 +19,12 @@ const map = ["###########",
 
 // create new World and populate Space according to map & legend
 const world = new World( map, {"c": Critter} );
-// console.log(util.inspect(world, false, null));
 
+/* ideally we don't consider a world with turns,
+  but time passing being merlely an expression of events happening (constant action and reaction)
+  if nothing happens, time does not exist, but for now: let's execute world.turn() instead of world.start()
+*/
 
-// turnEmitter.emit('turn');
 world.turn();
+
+console.log(util.inspect(world, false, null));
