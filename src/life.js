@@ -3,7 +3,7 @@ export default class Life {
     this.age = 0;
     this.genome = Object.create(null);
   }
-  act() {
+  age() {
     this.age++;
   }
 }

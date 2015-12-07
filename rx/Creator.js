@@ -14,5 +14,7 @@ var elementFromChar = function(legend, ch, genome, energy) {
 
 var EventEmitter = require('events').EventEmitter;
 var turnEmitter = new EventEmitter();
+var critterEmitter = new EventEmitter();
 
 export { turnEmitter }
+export { critterEmitter }

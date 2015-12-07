@@ -26,5 +26,5 @@ const world = new World( map, {"c": Critter} );
 */
 
 world.turn();
-
-console.log(util.inspect(world, false, null));
+// setInterval(world.turn, 1000)
+// console.log(util.inspect(world, false, null));
