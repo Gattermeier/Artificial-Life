@@ -1,4 +1,5 @@
 # Artificial Life Simulation   
+[![Dependency Status](https://david-dm.org/Gattermeier/Artificial-Life.svg)](https://david-dm.org/Gattermeier/Artificial-Life)    
 
 A fairly simple simulation of electronic life with genetic inheritance and mutation, originally inspired by Eloquent Javascripts's elife.  
 
